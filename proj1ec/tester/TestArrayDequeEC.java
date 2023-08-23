@@ -10,39 +10,33 @@ import student.StudentArrayDeque;
 public class TestArrayDequeEC {
     @Test
     public void randomizedTest() {
-        StudentArrayDeque<Integer> st = new StudentArrayDeque<>();
-        ArrayDequeSolution<Integer> ad = new ArrayDequeSolution<>();
+        StudentArrayDeque<Integer> broken = new StudentArrayDeque<>();
+        ArrayDequeSolution<Integer> correct = new ArrayDequeSolution<>();
 
-        int n = 5000;
-        String str = "\n";
-        for (int i = 0; i < n; i++) {
-            int opt = StdRandom.uniform(0, 4);
-            if (opt == 0) {
-                // addFirst
-                int num = StdRandom.uniform(0, 100);
-                st.addFirst(num);
-                ad.addFirst(num);
-                str += "addFirst(" + num + ")\n";
-            } else if (opt == 1) {
+        int N = 5000;
+        String msg = "\n";
+        for (int i = 0; i < N; i += 1) {
+            int operationNumber = StdRandom.uniform(0, 4);
+            if (operationNumber == 0) {
                 // addLast
-                int num = StdRandom.uniform(0, 100);
-                st.addLast(num);
-                ad.addLast(num);
-                str += "addLast(" + num + ")\n";
-            }
-
-            if (st.isEmpty()) {
-                continue;
-            }
-
-            if (opt == 2) {
+                int randVal = StdRandom.uniform(0, 100);
+                correct.addLast(randVal);
+                broken.addLast(randVal);
+                msg += "addLast(" + randVal + ")\n";
+            } else if (operationNumber == 1) {
+                // addFirst
+                int randVal = StdRandom.uniform(0, 100);
+                correct.addFirst(randVal);
+                broken.addFirst(randVal);
+                msg += "addFirst(" + randVal + ")\n";
+            } else if (!correct.isEmpty() && !broken.isEmpty() && operationNumber == 2) {
                 // removeFirst
-                str += "removeFirst()\n";
-                assertEquals(str, ad.removeFirst(), st.removeFirst());
-            } else if (opt == 3) {
+                msg += "removeFirst()\n";
+                assertEquals(msg,correct.removeFirst(), broken.removeFirst());
+            } else if (!correct.isEmpty() && !broken.isEmpty() && operationNumber == 3) {
                 // removeLast
-                str += "removeLast()\n";
-                assertEquals(str, ad.removeLast(), st.removeLast());
+                msg += "removeLast()\n";
+                assertEquals(msg,correct.removeLast(), broken.removeLast());
             }
         }
     }
