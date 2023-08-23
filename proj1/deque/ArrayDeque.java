@@ -64,7 +64,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         size = size + 1;
     }
 
-    public T getFirst() {
+    private T getFirst() {
         int ind = arrayInd(0);
         return items[ind];
     }
@@ -149,7 +149,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         return new ArrayDequeIterator();
     }
 
-    public class ArrayDequeIterator implements Iterator<T> {
+    private class ArrayDequeIterator implements Iterator<T> {
         private int pos;
         private ArrayDequeIterator() {
             pos = 0;
