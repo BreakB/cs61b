@@ -1,9 +1,5 @@
 package gh2;
 
-// TODO: uncomment the following import once you're ready to start this portion
-// import deque.Deque;
-// TODO: maybe more imports
-
 import deque.ArrayDeque;
 import deque.Deque;
 
@@ -16,7 +12,7 @@ public class GuitarString {
     private static final double DECAY = .996; // energy decay factor
 
     /* Buffer for storing sound data. */
-     private Deque<Double> buffer = new ArrayDeque<>();
+    private Deque<Double> buffer = new ArrayDeque<>();
 
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
@@ -34,7 +30,7 @@ public class GuitarString {
         //       other. This does not mean that you need to check that the numbers
         //       are different from each other. It means you should repeatedly call
         //       Math.random() - 0.5 to generate new random numbers for each array index.
-        for (int i = 0; i < buffer.size(); i ++) {
+        for (int i = 0; i < buffer.size(); i++) {
             double r = Math.random() - 0.5;
             buffer.removeFirst();
             buffer.addFirst(r);
